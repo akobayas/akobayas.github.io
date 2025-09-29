@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            display: flex; /* Flexbox レイアウトを有効化 */
+            justify-content: center; /* 水平方向の中央揃え */
+            align-items: center; /* 垂直方向の中央揃え */
+            height: 100vh;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: left; /* container内のテキストは左揃え */
+        }
+
+        .container {
+            display: flex; /* container 内の要素を横並びにする */
+            align-items: center; /* 垂直方向の中央揃え */
+            max-width: 90%; /* container の最大幅を調整 */
+            padding: 20px;
+            background-color: #fff; /* container の背景色を設定 (任意) */
+            border-radius: 8px; /* container の角を丸くする (任意) */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* container に影をつける (任意) */
+        }
+
+        .text-content {
+            flex: 1; /* テキスト領域が利用可能なスペースを埋める */
+            padding-right: 20px; /* 画像との間にスペースを作る */
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #0056b3;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 300px; /* 画像の幅を調整 */
+            height: auto;
+            display: block;
+        }
+
+        button {
+            background-color: #d9534f; /* ボタンの背景色 */
+            color: white; /* ボタンの文字色 */
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #c9302c; /* ホバー時の背景色 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="text-content">
+            <h1>実験は以上で終了です。</h1>
+			<p>お手数ですがこのままブラウザを閉じて終了いただくようお願いします。</p>
+            <p>このたびはご協力いただき、誠にありがとうございました。</p>
+        </div>
+        <img src="robot.png" alt="ありがとうございました">
+    </div>
+
+
+</body>
+
+</html>
