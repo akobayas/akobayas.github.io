@@ -100,23 +100,27 @@
     <h1>参加者情報入力</h1>
     <p>実験を始める前に，年齢と性別の入力をお願いいたします．</p>
 	<p>このデータは学術論文や学会発表のため参加者何十人の代表値 ( 平均値など ) を算出するためにのみ用い，あなた (研究参加者) 個人のデータが単独で公表される可能性はありません．</p>
-	<p>またメールアドレスは謝礼お支払いの手続きにのみ利用いたします．</p>
 
-    <form action="https://run.pavlovia.org/akobayas/CL-experiment_17_BP" method="get">
-        <div class="form-group">
-            <label for="age">年齢:</label>
-            <input type="number" id="age" name="age" min="18" required>
-        </div>
+    <form id="participant-info-form" action="https://run.pavlovia.org/akobayas/exp-2026u1o-1" method="get">
 
-        <div class="form-group">
-            <label for="gender">性別:</label>
-            <select id="gender" name="gender" required>
-                <option value="">選択してください</option>
-                <option value="male">男</option>
-                <option value="female">女</option>
-                <option value="other">無回答</option>
-            </select>
-        </div>
+		<input type="hidden" id="participant" name="participant">
+		<input type="hidden" id="list_id" name="list_id">
+    	<input type="hidden" id="exp" name="exp">
+		
+		<div class="form-group">
+        	<label for="age">年齢:</label>
+			<input type="number" id="age" name="age" min="18" required>
+		</div>
+
+	    <div class="form-group">
+    	    <label for="gender">性別:</label>
+        	<select id="gender" name="gender" required>
+            	<option value="">選択してください</option>
+            	<option value="male">男</option>
+          	  <option value="female">女</option>
+           	 <option value="other">無回答</option>
+        	</select>
+		</div>
 
         <div class="form-group">
             <label for="email">メールアドレス:</label>
@@ -131,7 +135,22 @@
 
         <button type="submit">実験を開始する</button>
     </form>
-
+	
+	<script>
+		const params = new URLSearchParams(window.location.search);
+		
+		const participant = params.get('participant');
+		const listId = params.get('list_id');
+		const exp = params.get('exp');
+		
+		if (!participant || !listId || !exp) {
+			alert('実験URLの情報が不足しています。案内メールのURLからアクセスし直してください。');
+		} else {
+			document.getElementById('participant').value = participant;
+			document.getElementById('list_id').value = listId;
+			document.getElementById('exp').value = exp;
+		}
+	</script>
 </body>
 
 </html>
