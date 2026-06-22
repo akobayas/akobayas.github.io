@@ -146,15 +146,49 @@
             }
         });
 
-        startButton.addEventListener('click', function(event) {
-            if (!this.classList.contains('enabled')) {
-                event.preventDefault(); // チェックされていない場合はボタンのデフォルトの動作を無効化
-            } else {
-                // 同意済みの場合の処理 (実験開始ページへの遷移)
-                window.location.href = 'https://akobayas.github.io/senshu-u-t.html';
-            }
-        });
-    </script>
+<script>
+    const consentCheckbox = document.getElementById('consent-checkbox');
+    const startButton = document.getElementById('start-button');
 
+    const params = new URLSearchParams(window.location.search);
+
+    const participant = params.get('participant');
+    const listId = params.get('list_id');
+    const exp = params.get('exp');
+
+    const nextPages = {
+        textbase: 'https://akobayas.github.io/senshu-u-t.html',
+        inference: 'https://akobayas.github.io/senshu-u-i.html'
+    };
+
+    consentCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            startButton.classList.add('enabled');
+        } else {
+            startButton.classList.remove('enabled');
+        }
+    });
+
+    startButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (!this.classList.contains('enabled')) {
+            return;
+        }
+
+        if (!participant || !listId || !exp || !nextPages[exp]) {
+            alert('実験URLの情報が不足しています。案内メールのURLからアクセスし直してください。');
+            return;
+        }
+
+        const nextUrl = new URL(nextPages[exp]);
+
+        nextUrl.searchParams.set('participant', participant);
+        nextUrl.searchParams.set('list_id', listId);
+        nextUrl.searchParams.set('exp', exp);
+
+        window.location.href = nextUrl.toString();
+    });
+</script>
 </body>
 </html>
